@@ -120,8 +120,8 @@ function readProducts() {
   connection.query("SELECT item_id AS ID, product_name AS Name, price AS Price, stock_quantity AS Stock FROM products", function(err, res) {
     if (err) throw err;
     // Log all results of the SELECT statement
-    console.log(" ID:   Price: Stock:  Product Name:            ")
-    for (var i = 0; i<res.length-1; i++) {
+    console.log(" ID:   Price: Stock:  Product Name: ")
+    for (var i = 0; i<res.length; i++) {
       if (i === 2 || i === 8) {
         var price = parseFloat(res[i].Price).toFixed(2);
           console.log("   " + res[i].ID+ "  "+price+"    "+res[i].Stock+"    "+res[i].Name);
@@ -129,12 +129,14 @@ function readProducts() {
       } else if (i === 5 || i === 6) {
         var price = parseFloat(res[i].Price).toFixed(2);
           console.log("   " + res[i].ID+ "    "+price+"    "+res[i].Stock+"    "+res[i].Name);
+      } else if (i >= 9) {
+        console.log("  " + res[i].ID+ "   "+parseFloat(res[i].Price).toFixed(2)+"    "+res[i].Stock+"    "+res[i].Name);
       } else {
         var price = parseFloat(res[i].Price).toFixed(2);
           console.log("   " + res[i].ID+ "   "+price+"    "+res[i].Stock+"    "+res[i].Name);
       }
     }
-    console.log("  " + res[9].ID+ "   "+parseFloat(res[9].Price).toFixed(2)+"    "+res[9].Stock+"    "+res[9].Name);
+    
     // console.log(res);
     console.log("");
 
