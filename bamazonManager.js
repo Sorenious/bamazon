@@ -160,6 +160,7 @@ function addInventory() {
           }
         ],
         function(err, res) {
+          console.log(res.affectedRows + " product updated!\n");
           menu();
         }
       );
